@@ -1,7 +1,7 @@
 # Create a Dockerfile to containerize the llama.py application.
 
 # Dockerfile
-FROM python:3.9-slim
+FROM python:3.9
 
 # Set working directory
 WORKDIR /app
