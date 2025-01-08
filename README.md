@@ -40,7 +40,7 @@ streamlit run llama.py
 Build and run the Docker container:
 ```bash
 # Build Docker image
-docker build -t karthigaadevi12/llama:latest .
+docker buildx build -t karthigaadevi12/llama:latest .
 
 # Run Docker container
 docker run -p 8501:8501 karthigaadevi12/llama:latest
