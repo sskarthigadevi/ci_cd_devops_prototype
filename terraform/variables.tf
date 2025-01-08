@@ -13,5 +13,5 @@ variable "namespace" {
 variable "image_name" {
   description = "Docker image name for the application"
   type        = string
-  default     = "<your-dockerhub-username>/llama:latest"
+  default     = "karthigaadevi12/llama:latest"
 }
