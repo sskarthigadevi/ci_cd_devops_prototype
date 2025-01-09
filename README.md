@@ -78,3 +78,5 @@ terraform apply
 
 ### Notes
 - Ensure Kubernetes and Docker are properly configured.
+- ![image](https://github.com/user-attachments/assets/9d614703-db01-415c-972a-5954ea4faffe)
+
