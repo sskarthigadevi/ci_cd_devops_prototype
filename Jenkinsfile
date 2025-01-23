@@ -1,4 +1,4 @@
-# 4. Jenkins Pipeline Script (Jenkinsfile)
+// 4. Jenkins Pipeline Script (Jenkinsfile)
 
 pipeline {
     agent any
