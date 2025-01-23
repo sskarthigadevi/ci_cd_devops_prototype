@@ -26,5 +26,12 @@ pipeline {
                 bat 'kubectl apply -f service.yaml'
             }
         }
+        stage('Verify Deployment') {
+            steps {
+                bat 'kubectl get pods -n llama-namespace'
+                bat 'kubectl get svc -n llama-namespace'
+               }    
+            
+        }
     }
 }
