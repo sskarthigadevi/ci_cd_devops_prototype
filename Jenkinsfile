@@ -10,20 +10,20 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t karthigaadevi12/llama:latest .'
+                bat 'docker build -t karthigaadevi12/llama:latest .'
             }
         }
         stage('Push to DockerHub') {
             steps {
                 withDockerRegistry([ credentialsId: 'dockerhub-credentials', url: '' ]) {
-                    sh 'docker push karthigaadevi12/llama:latest'
+                    bat 'docker push karthigaadevi12/llama:latest'
                 }
             }
         }
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f deployment.yaml'
-                sh 'kubectl apply -f service.yaml'
+                bat 'kubectl apply -f deployment.yaml'
+                bat 'kubectl apply -f service.yaml'
             }
         }
     }
