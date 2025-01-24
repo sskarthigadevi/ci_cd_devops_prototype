@@ -19,7 +19,8 @@ pipeline {
         stage('Push to DockerHub') {
             steps {
                 script {
-                    bat 'docker push llama:latest'
+                     withDockerRegistry([ credentialsId: 'dockerhub-credentials', url: '' ]) {
+                        sh 'docker push devisskarthigaa@gmail.com/llama:latest'
                 }
             }
         }
