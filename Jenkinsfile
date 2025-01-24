@@ -2,43 +2,43 @@
 
 pipeline {
     agent any
+    environment {
+        KUBECONFIG = credentials('kubernetes')  // reference the ID of the kubeconfig credential
+    }
     stages {
-        stage('Clone Repository') {
+        stage('Checkout SCM') {
             steps {
-                git branch: 'main', url: 'https://github.com/sskarthigadevi/ci_cd_devops_prototype.git'
+                git 'https://github.com/sskarthigadevi/ci_cd_devops_prototype.git'
             }
         }
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t karthigaadevi12/llama:latest .'
+                script {
+                    sh 'docker build -t my-image .'
+                }
             }
         }
         stage('Push to DockerHub') {
             steps {
-                withDockerRegistry([credentialsId: 'dockerhub-credentials', url: '']) {
-                    bat 'docker push karthigaadevi12/llama:latest'
+                script {
+                    sh 'docker push my-image'
                 }
             }
         }
         stage('Deploy to Kubernetes') {
             steps {
-                bat 'kubectl apply -f deployment.yaml'
-                bat 'kubectl apply -f service.yaml'
+                script {
+                    sh 'kubectl apply -f deployment.yaml'
+                    sh 'kubectl apply -f service.yaml'
+                }
             }
         }
         stage('Verify Deployment') {
             steps {
-                bat 'kubectl get pods -n llama-namespace'
-                bat 'kubectl get svc -n llama-namespace'
-            }    
-        }
-    }
-    post {
-        failure {
-            echo "Pipeline failed! Check logs for details."
-        }
-        success {
-            echo "Pipeline completed successfully!"
+                script {
+                    sh 'kubectl rollout status deployment/my-deployment'
+                }
+            }
         }
     }
 }
