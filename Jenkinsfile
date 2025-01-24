@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout SCM') {
             steps {
-                git 'https://github.com/sskarthigadevi/ci_cd_devops_prototype.git'
+                git 'https://github.com/sskarthigadevi/ci_cd_devops_prototype.git, branch: 'main''
             }
         }
         stage('Build Docker Image') {
