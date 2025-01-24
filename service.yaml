@@ -10,4 +10,5 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 8501
-  type: LoadBalancer
+    nodePort: 30001  # Specify nodePort for Minikube
+  type: NodePort  # Use NodePort to expose service locally in Minikube
