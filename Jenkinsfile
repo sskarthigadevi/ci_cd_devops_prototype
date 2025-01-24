@@ -6,35 +6,35 @@ pipeline {
     stages {
         stage('Checkout SCM') {
             steps {
-                git 'https://github.com/sskarthigadevi/ci_cd_devops_prototype.git'
+                git branch: 'main', url: 'https://github.com/sskarthigadevi/ci_cd_devops_prototype.git'
             }
         }
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t my-image .'
+                    bat 'docker build -t llama .'
                 }
             }
         }
         stage('Push to DockerHub') {
             steps {
                 script {
-                    sh 'docker push my-image'
+                    bat 'docker push llama'
                 }
             }
         }
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh 'kubectl apply -f deployment.yaml'
-                    sh 'kubectl apply -f service.yaml'
+                    bat 'kubectl apply -f deployment.yaml'
+                    bat 'kubectl apply -f service.yaml'
                 }
             }
         }
         stage('Verify Deployment') {
             steps {
                 script {
-                    sh 'kubectl rollout status deployment/my-deployment'
+                    bat 'kubectl rollout status deployment/my-deployment'
                 }
             }
         }
