@@ -12,14 +12,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t llama .'
+                    bat 'docker build -t llama:latest .'
                 }
             }
         }
         stage('Push to DockerHub') {
             steps {
                 script {
-                    bat 'docker push llama'
+                    bat 'docker push llama:latest'
                 }
             }
         }
