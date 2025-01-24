@@ -1,6 +1,7 @@
 //Jenkins pipeline script
 
 pipeline {
+   agent any 
    environment {
         KUBECONFIG = 'C:/Users/harih/.kube/config' 
     }
