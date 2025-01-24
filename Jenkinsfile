@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Push to DockerHub') {
             steps {
-                withDockerRegistry([ credentialsId: 'dockerhub-credentials', url: '' ]) {
+                withDockerRegistry([credentialsId: 'dockerhub-credentials', url: '']) {
                     bat 'docker push karthigaadevi12/llama:latest'
                 }
             }
@@ -30,8 +30,19 @@ pipeline {
             steps {
                 bat 'kubectl get pods -n llama-namespace'
                 bat 'kubectl get svc -n llama-namespace'
-               }    
-            
+            }    
+        }
+    }
+    post {
+        failure {
+            echo "Pipeline failed! Check logs for details."
+        }
+        success {
+            echo "Pipeline completed successfully!"
+        }
+    }
+}
+
         }
     }
 }
