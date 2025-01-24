@@ -2,9 +2,7 @@
 
 pipeline {
     agent any
-    environment {
-        KUBECONFIG = credentials('kubernetes')  // reference the ID of the kubeconfig credential
-    }
+  
     stages {
         stage('Checkout SCM') {
             steps {
