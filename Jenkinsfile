@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry([ credentialsId: 'dockerhub-credentials', url: '' ]) {
-                        sh 'docker push karthigaadevi12/llama:latest'
+                        bat 'docker push karthigaadevi12/llama:latest'
                     }
                 }
             }
