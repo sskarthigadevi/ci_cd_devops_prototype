@@ -36,12 +36,13 @@ pipeline {
                 }
             }
         }
-        stage('Verify Deployment') {
-            steps {
-                script {
-                    bat 'kubectl rollout status deployment/my-deployment'
-                }
-            }
-        }
+       stage('Verify Deployment') {
+             steps {
+                 script {
+                    bat 'kubectl rollout status deployment/llama-deployment'
+                 }
+             }
+         }
+
     }
 }
