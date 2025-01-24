@@ -1,4 +1,4 @@
-// 4. Jenkins Pipeline Script (Jenkinsfile)
+//Jenkins pipeline script
 
 pipeline {
     agent any
@@ -19,8 +19,9 @@ pipeline {
         stage('Push to DockerHub') {
             steps {
                 script {
-                     withDockerRegistry([ credentialsId: 'dockerhub-credentials', url: '' ]) {
+                    withDockerRegistry([ credentialsId: 'dockerhub-credentials', url: '' ]) {
                         sh 'docker push devisskarthigaa@gmail.com/llama:latest'
+                    }
                 }
             }
         }
