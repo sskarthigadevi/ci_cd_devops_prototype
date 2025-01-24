@@ -1,8 +1,8 @@
 //Jenkins pipeline script
 
 pipeline {
-    environment {
-        KUBECONFIG = 'C:\Users\harih\.kube\config'
+   environment {
+        KUBECONFIG = 'C:/Users/harih/.kube/config' 
     }
   
     stages {
